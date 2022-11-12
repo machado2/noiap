@@ -10,6 +10,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/games/free',
+        permanent: false,
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

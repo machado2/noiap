@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import AppItem from '../../components/appitem';
+import Link from 'next/link';
 
-
-// https://playstoreweb.delightfulsand-f1c1f7bb.centralus.azurecontainerapps.io/noiap
-// https://playstoreweb.delightfulsand-f1c1f7bb.centralus.azurecontainerapps.io/free
 
 export async function getStaticProps() {
     const freeGames = await (await fetch('https://playstoreweb.delightfulsand-f1c1f7bb.centralus.azurecontainerapps.io/free')).json()
@@ -21,6 +19,10 @@ export default function free({ freeGames }: { freeGames: any[] }) {
         <Head>
             <title>Free Android Games</title>
         </Head>
+        <div className="m-4">
+            <h2 className="inline-block rounded bg-blue-100 p-2 h-12 text-lg">Free</h2>
+            <Link className="inline-block p-2 rounded bg-blue-100 ml-4 h-12 text-lg" href='/games/noiap'>Paid</Link>
+        </div>
         {names}
     </Layout>;
 }

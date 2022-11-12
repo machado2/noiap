@@ -1,31 +1,16 @@
-import React, { useState } from "react";
-import { Carousel, Card } from 'antd';
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from "next/link";
 
 export default function AppItem({ app }) {
-    const urls = app.screenshots
-    const screenshots = []
-    let bucket = []
-    const groups = []
-    for (let url of urls) {
-        bucket.push(<div key={url} className="basis-1/3"><Image src={url} className="w-1/2" alt="" width={100} height={0} /></div>)
-        if (bucket.length >= 3) {
-            groups.push(bucket)
-            bucket = []
-        }
-    }
-
-    let key = 1
-    for (let group of groups) {
-        screenshots.push(<div key={key++}><div className="flex flex-row" key={key}>{group}</div></div>)
-    }
-
-    return <Card title={app.title}>
-        <p className="description" style={{ "maxHeight": "5em", overflow: "hidden", textOverflow: "ellipsis" }}>
+    const images = app.screenshots.map(url => <Image src={url} className="mr-1 mb-1 w-1/6 inline-block" alt="" width={100} height={0} />)
+    return <div className="m-4 p-4 bg-green-100 rounded">
+        <Link href={'https://play.google.com/store/apps/details?id=' + app.appId} 
+            className="font-bold text-lg">{app.title}</Link>
+        <p className="w-5/6 h-20 overflow-hidden hover:overflow-auto">
             {app.description}
         </p>
-        <Carousel autoplay>
-            {screenshots}
-        </Carousel>
-    </Card>
+        <div>
+            {images}
+        </div>
+    </div>
 }
