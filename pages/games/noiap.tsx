@@ -5,7 +5,7 @@ import Layout from '../../components/layout';
 
 
 export async function getStaticProps() {
-    const freeGames = await (await fetch('https://playstoreweb.delightfulsand-f1c1f7bb.centralus.azurecontainerapps.io/noiap')).json()
+    const freeGames = await (await fetch('http://noiap.centralus.cloudapp.azure.com/noiap')).json()
     return {
         props: {
             freeGames,

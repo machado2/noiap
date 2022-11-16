@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 
 export async function getStaticProps() {
-    const freeGames = await (await fetch('https://playstoreweb.delightfulsand-f1c1f7bb.centralus.azurecontainerapps.io/free')).json()
+    const freeGames = await (await fetch('http://noiap.centralus.cloudapp.azure.com/free')).json()
     return {
         props: {
             freeGames,
